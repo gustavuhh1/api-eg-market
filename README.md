@@ -1,4 +1,4 @@
-# G&E Market
+# EG Market
 
 **Um sistema de mercado simples e funcional para fins acadêmicos.**
 
