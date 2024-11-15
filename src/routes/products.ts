@@ -1,13 +1,120 @@
 import { FastifyInstance } from "fastify";
-import { app, prisma } from "@/app";
+import { prisma } from "@/app";
+import { z } from "zod";
 
 
 export async function productsRoutes(app: FastifyInstance) {
     
-    app.get('/', async (request) => {
+    app.post('/create', async (request, reply) => {
 
-        const products = await prisma.products.findMany()
+        const createProductBodySchema = z.object({
+            name: z.string(),
+            price: z.number(),
+            img_link: z.string().url(),
 
+        })
+
+        const { name, price, img_link } = createProductBodySchema.parse(
+            request.body
+        )
+
+
+        const products = await prisma.products.create({data: {
+            name,
+            price,
+            img_link: img_link || "",
+        }})
+
+        return reply.status(201).send(JSON.stringify(products))
+    })
+
+    app.get('/allProducts', async(request, reply) => {
+        
+        const query = await prisma.products.findMany({orderBy: {id: 'asc'}})
+
+        const productsQuery = {"produtos": query}
+
+        return reply.status(201).send(productsQuery)
+    })
+
+    app.get('/:id', async (request, reply) => {
+
+        const createQueryId = z.object({
+            id: z.string()
+        })
+
+        const { id } = createQueryId.parse(request.params)
+
+        const query_id = await prisma.products.findFirst({
+            where: {
+                id: Number(id)
+            }
+        })
+
+        return reply.status(200).send(query_id)
+    })
+
+    app.delete('/deleteProductId/:id', async (request, reply) => {
+
+        const createQueryId = z.object({
+            id: z.string()
+        })
+
+        const { id } = createQueryId.parse(request.params)
+
+        try {
+
+                await prisma.products.delete({
+                
+                where: {
+                    id: Number(id)
+                }
+                
+            })
+
+        } catch (error) {
+            return reply.status(401).send({error: error})
+        }
+
+        
+
+        return reply.status(204).send()
+    })
+
+    app.post('/resetBD', async (request, reply) => {
+
+
+        // Resetar o bando de dados, e criar um genérico
+        await prisma.products.deleteMany({})
+
+
+        try {
+            interface Product {
+                title: string;
+                price: number;
+                image: string;
+            }
+
+            const productsExamples = await fetch('https://fakestoreapi.com/products')
+            const data = await productsExamples.json();
+            console.log(data)
+
+            data.forEach(async (element: Product) => {
+
+                await prisma.products.create({
+                    data: {
+                        name: element.title,
+                        price: element.price,
+                        img_link: element.image,
+                    }
+                })
+            
+            });
+            
+            return reply.status(200).send()
+        } catch (error) {
+            console.error('Error na requisição.', error)
+        }
         
     })
 }
