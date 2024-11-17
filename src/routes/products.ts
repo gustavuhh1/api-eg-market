@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { prisma } from "@/app";
+import { prisma } from "../app";
 import { z } from "zod";
 
 
@@ -42,11 +42,9 @@ export async function productsRoutes(app: FastifyInstance) {
 
     app.get('/allProducts', async(request, reply) => {
         
-        const query = await prisma.products.findMany({orderBy: {id: 'asc'}})
+        const products = await prisma.products.findMany({orderBy: {id: 'asc'}})
 
-        const productsQuery = {"produtos": query}
-
-        return reply.status(201).send(productsQuery)
+        return reply.status(201).send({products})
     })
 
     app.get('/:id', async (request, reply) => {
@@ -57,13 +55,13 @@ export async function productsRoutes(app: FastifyInstance) {
 
         const { id } = createQueryId.parse(request.params)
 
-        const query_id = await prisma.products.findFirst({
+        const product = await prisma.products.findFirst({
             where: {
                 id: Number(id)
             }
         })
 
-        return reply.status(200).send(query_id)
+        return reply.status(200).send({ product })
     })
 
     app.delete('/deleteProductId/:id', async (request, reply) => {
@@ -163,7 +161,7 @@ export async function productsRoutes(app: FastifyInstance) {
             if(img_link !== null) product.img_link = img_link;
 
             await prisma.products.update({
-                where: { id },
+                where: { id: Number(id) },
                 data: {
                      name: product.name,
                      price: product.price,
