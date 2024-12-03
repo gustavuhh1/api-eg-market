@@ -109,11 +109,13 @@ btnRemover.addEventListener('click', () => {
 const listarProdutos = document.querySelector('#btnList');
 
 async function displayProducts() {
-    const apiUrl = "https://fakestoreapi.com/products"
+    const apiUrl = "http://locahost:3000/login/allProducts"
 
     const request = await fetch(apiUrl);
     const data = await request.json();
     const productList = document.querySelector('.productsDisplay')
+
+    console.log(data)
     data.forEach(product => {
         const li = document.createElement('li');
         li.className = "product";
