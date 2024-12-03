@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EG Market</title>
+    <link rel="stylesheet" href="styleProducts.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Indie+Flower&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    
+    <header>
+        <div class="headerMain">
+            <div class="headerTop">
+                <div class="logo">
+
+                </div>
+                <input type="text" placeholder="Digite o produto que deseja...">
+                <div class="headerTopBtns">
+                    <p>Olá, Elisson!</p>
+                    <a href="">Carrinho <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m480-560-56-56 63-64H320v-80h167l-64-64 57-56 160 160-160 160ZM280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM40-800v-80h131l170 360h280l156-280h91L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68.5-39t-1.5-79l54-98-144-304H40Z"/></svg></a>
+                </div>
+            </div>
+
+                <nav class="headerNav">
+                    <ul class="navList">
+                        <li class="navGuide"><a href="">Alimentos e Bebidas 🍎</a></li>
+                        <li class="navGuide"><a href="">Higiene Pessoal 🧼</a></li>
+                        <li class="navGuide"><a href="">Limpeza 🧽</a></li>
+                        <li class="navGuide"><a href="">Frios e Laticínios 🧀</a></li>
+                        <li class="navGuide"><a href="">Carnes e Peixes 🥩</a></li>
+                        <li class="navGuide"><a href="">Hortifrutti 🥦</a></li>
+                        <li class="navGuide"><a href="">Bebidas Alcoólicas 🍷</a></li>
+                    </ul>
+                </nav>
+            
+        </div>
+    </header>
+
+    <main class="adminDisplay">
+        <ul class="adminCommands">
+            <li><button id="btnAdc" class="adminButtons">Adicionar Produtos</button></li>
+            <li><button id="btnEdit" class="adminButtons">Editar Produto</button></li>
+            <li><button id="btnRemove" class="adminButtons">Remover Produto</button></li>
+            <li><button id="btnList" class="adminButtons">Atualizar Produtos</button></li>
+        </ul>
+
+       <section class="resultGuide">
+
+        </section>
+
+        <ul class="productsDisplay"></ul>
+        
+    </main>
+    
+    <footer class="rodape">
+        <h5>EG Market. Alguns direitos reservados.</h5>
+        <h6>Gostou? Contrate-nos como dev!</h6>
+        <label>Elisson Victor <i onclick="window.open('https://github.com/elishowbr')" class="fa fa-github" style="font-size:24px"></i></label>
+        <label>Gustavo Martins <i onclick="window.open('https://github.com/gustavuhh1')" class="fa fa-github" style="font-size:24px"></i></label>
+    </footer>
+    
+    <script src="scriptProducts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
