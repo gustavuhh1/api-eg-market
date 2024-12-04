@@ -53,6 +53,7 @@ body {
 
         & img {
             max-width: 100%;
+            cursor: pointer;
         }
 
         & input {
@@ -128,6 +129,7 @@ body {
                 transform: scale(1.03);
                 cursor: pointer;
                 background-color: var(--cor-secundaria);
+                box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.2);
                 transition: 0.3s ease-in;
             }
 

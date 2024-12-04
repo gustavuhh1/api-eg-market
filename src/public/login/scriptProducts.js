@@ -114,8 +114,7 @@ async function displayProducts() {
     const request = await fetch(apiUrl);
     const data = await request.json();
     const productList = document.querySelector('.productsDisplay')
-
-    console.log(data)
+    productList.innerHTML = ""
     data.forEach(product => {
         const li = document.createElement('li');
         li.className = "product";
@@ -128,7 +127,7 @@ async function displayProducts() {
         productInfo.className = "productInfo";
 
         const h6 = document.createElement('h6');
-        h6.textContent = product.name;
+        h6.textContent = product.title;
 
         const pPrice = document.createElement('p');
         pPrice.textContent = `Preço: R$ ${product.price}`
