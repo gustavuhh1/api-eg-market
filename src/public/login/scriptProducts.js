@@ -109,7 +109,7 @@ btnRemover.addEventListener('click', () => {
 const listarProdutos = document.querySelector('#btnList');
 
 async function displayProducts() {
-    const apiUrl = "http://locahost:3000/login/allProducts"
+    const apiUrl = "http://localhost:3000/products/allProducts"
 
     const request = await fetch(apiUrl);
     const data = await request.json();
@@ -121,14 +121,14 @@ async function displayProducts() {
         li.className = "product";
 
         const img = document.createElement('img');
-        img.src = product.image;
+        img.src = product.img_link;
         img.alt = "Foto";
 
         const productInfo = document.createElement('productInfo');
         productInfo.className = "productInfo";
 
         const h6 = document.createElement('h6');
-        h6.textContent = product.title;
+        h6.textContent = product.name;
 
         const pPrice = document.createElement('p');
         pPrice.textContent = `Preço: R$ ${product.price}`

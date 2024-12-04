@@ -59,7 +59,7 @@ body {
             min-height: 55%;
             margin-left: 2rem;
             background-image: url('../logo.png');
-            background-size: contain;
+            background-size: fill;
             background-repeat: no-repeat;
             cursor: pointer;
         }
@@ -262,7 +262,7 @@ body {
             display: grid;
             width: 100%;
             grid-template-columns: 30% 70%;
-            background-color: red;
+            background-color: var(--cor-fundo);
             border-radius: 6px;
             align-items: center;
             padding: 0.5rem;
