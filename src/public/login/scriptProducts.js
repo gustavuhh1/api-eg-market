@@ -109,7 +109,7 @@ btnRemover.addEventListener('click', () => {
 const listarProdutos = document.querySelector('#btnList');
 
 async function displayProducts() {
-    console.log(window.location.pathname)
+    console.log(window.location.href)
     const apiUrl = "http://localhost:3000/products/allProducts"
     const request = await fetch(apiUrl);
     const data = await request.json();
