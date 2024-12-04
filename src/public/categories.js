@@ -17,15 +17,15 @@ const categorias = [
       "classCategoria": 'ph ph-wine'
     },
     {
-      "categoria": "Higiene Pessoal",
+      "categoria": "Higiene",
       "classCategoria": 'ph ph-tooth'
     },
     {
-      "categoria": "Limpeza e Descartáveis",
+      "categoria": "Limpeza",
       "classCategoria": 'ph ph-toilet-paper'
     },
     {
-      "categoria": "Alimentos Congelados",
+      "categoria": "Congelados",
       "classCategoria": 'ph ph-ice-cream'
     }
   ]

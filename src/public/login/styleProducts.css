@@ -51,17 +51,8 @@ body {
         align-items: center;
         justify-content: center;
 
-        & .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 100%;
-            min-height: 55%;
-            margin-left: 2rem;
-            background-image: url('../logo.png');
-            background-size: fill;
-            background-repeat: no-repeat;
-            cursor: pointer;
+        & img {
+            max-width: 100%;
         }
 
         & input {
@@ -143,7 +134,7 @@ body {
             }
 
             & .navGuide:hover {
-                transform: scale(1.05);
+                transform: scale(1.03);
                 cursor: pointer;
                 background-color: var(--cor-secundaria);
                 transition: 0.3s ease-in;
@@ -151,7 +142,7 @@ body {
 
             & a {
                 text-decoration: none;
-                font-size: 1.15rem;
+                font-size: 1.10rem;
                 color: var(--cor-texto-principal);
             }
         }
@@ -196,9 +187,20 @@ body {
 
     .adminButtons:hover{
         transform: scale(1.03);
+    }
+
+    #btnAdc:hover, #btnList:hover{
+        background-color: #06b147;
+    }
+
+    #btnEdit:hover{
         background-color: var(--cor-secundaria);
     }
 
+    #btnRemove:hover{
+        background-color: #FF454C;
+    }
+    
     .resultGuide{
         width: 70%;
         height: 15%;
@@ -206,7 +208,7 @@ body {
         .resultsInput{
             width: 100%;
             height: 100%;
-            background-color: #2E7D32;
+            background-color: #06b147;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             justify-content: center;
@@ -235,7 +237,11 @@ body {
             }
 
             button:hover{
-                color: var(--cor-secundaria);
+                color: var(--cor-texto-principal);
+            }
+
+            #findProduct:hover{
+                color: var(--cor-texto-principal);
             }
         }
 
@@ -293,7 +299,7 @@ body {
     flex-flow: column;
     align-items: center;
     width: 100%;
-    height: 15vh;
+    height: 18vh;
     display: flex;
     background-color: var(--cor-texto-secundario);
     justify-content: center;

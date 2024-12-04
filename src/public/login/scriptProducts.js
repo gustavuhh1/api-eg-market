@@ -28,6 +28,7 @@ btnAdicionar.addEventListener('click', () => {
     labelId.appendChild(inputId);
 
     const button = document.createElement('button');
+    button.id = 'findProduct'
     button.textContent = "Adicionar Produto";
 
     form.append(labelNome, labelId, button);
@@ -109,12 +110,7 @@ btnRemover.addEventListener('click', () => {
 const listarProdutos = document.querySelector('#btnList');
 
 async function displayProducts() {
-    console.log(window.location.href)
-    const href = window.location.href
-    const path = window.location.pathname
-    const domainUrl = href.replace(path, '')
-    
-    const apiUrl = `${domainUrl}/products/allProducts`
+    const apiUrl = 'https://fakestoreapi.com/products'
     const request = await fetch(apiUrl);
     const data = await request.json();
     const productList = document.querySelector('.productsDisplay')
@@ -125,7 +121,7 @@ async function displayProducts() {
         li.className = "product";
 
         const img = document.createElement('img');
-        img.src = product.img_link;
+        img.src = product.image;
         img.alt = "Foto";
 
         const productInfo = document.createElement('productInfo');
