@@ -110,7 +110,11 @@ const listarProdutos = document.querySelector('#btnList');
 
 async function displayProducts() {
     console.log(window.location.href)
-    const apiUrl = "http://localhost:3000/products/allProducts"
+    const href = window.location.href
+    const path = window.location.pathname
+    const domainUrl = href.replace(path, '')
+    
+    const apiUrl = `${domainUrl}/products/allProducts`
     const request = await fetch(apiUrl);
     const data = await request.json();
     const productList = document.querySelector('.productsDisplay')
