@@ -7,7 +7,7 @@ async function getCategories() {
     const currentUrl = window.location.href;
     const pathName = window.location.pathname;
     const newUrl = currentUrl.replace(pathName, '');
-    const request = await fetch(`${newUrl}/products/allProducts`);
+    const request = await fetch(`${newUrl}/products/`);
     const data = await request.json();
 
     const select = document.querySelector('#categoryProduct');
@@ -133,11 +133,8 @@ async function displayProducts() {
     const currentUrl = window.location.href;
     const pathName = window.location.pathname;
     const newUrl = currentUrl.replace(pathName, '');
-    console.log(`${newUrl}/products/`)
     const request = await fetch(`${newUrl}/products/`);
     const data = await request.json();
-    console.log(data);
-
     
     const productList = document.querySelector('.productsDisplay');
     productList.innerHTML = "";
@@ -147,14 +144,14 @@ async function displayProducts() {
         li.className = "product";
 
         const img = document.createElement('img');
-        img.src = product.image;
+        img.src = product.img_link;
         img.alt = "Foto";
 
         const productInfo = document.createElement('productInfo');
         productInfo.className = "productInfo";
 
         const h6 = document.createElement('h6');
-        h6.textContent = product.title;
+        h6.textContent = product.name;
 
         const pPrice = document.createElement('p');
         pPrice.textContent = `Preço: R$ ${product.price}`
@@ -162,7 +159,7 @@ async function displayProducts() {
         const pId = document.createElement('p');
         pId.textContent = `Id: ${product.id}`;
 
-        productInfo.append(h6, pPrice, pId);
+        productInfo.append(h6, pId, pPrice);
         li.append(img, productInfo)
         productList.append(li);
     });    
