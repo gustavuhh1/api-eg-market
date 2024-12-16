@@ -1,5 +1,24 @@
+
 /* eslint-disable no-undef */
 const btnAdicionar = document.querySelector('#btnAdc');
+
+async function getCategories() {
+
+    const currentUrl = window.location.href;
+    const pathName = window.location.pathname;
+    const newUrl = currentUrl.replace(pathName, '');
+    const request = await fetch(`${newUrl}/products/allProducts`);
+    const data = await request.json();
+
+    const select = document.querySelector('#categoryProduct');
+    data.forEach((product) => {
+        const productCategory = document.createElement('option');
+        productCategory.value = product.category;
+        productCategory.textContent = product.category;
+        select.appendChild(productCategory);
+    })
+}
+
 
 btnAdicionar.addEventListener('click', () => {
     const results = document.querySelector('.resultGuide');
@@ -17,21 +36,21 @@ btnAdicionar.addEventListener('click', () => {
     inputNome.id = "nameProduct";
     labelNome.appendChild(inputNome);
 
+    const labelCategory = document.createElement('label');
+    labelCategory.setAttribute('for', 'categoryProduct');
+    labelCategory.textContent = "Categoria:";
 
-    const labelId = document.createElement('label');
-    labelId.setAttribute('for', 'idProduct');
-    labelId.textContent = "Id:";
-
-    const inputId = document.createElement('input');
-    inputId.name = "idProduct";
-    inputId.id = "idProduct";
-    labelId.appendChild(inputId);
+    const selectCategory = document.createElement('select');
+    selectCategory.name = "categoryProduct";
+    selectCategory.id = "categoryProduct";
+    selectCategory.addEventListener(getCategories);
+    labelCategory.appendChild(selectCategory);
 
     const button = document.createElement('button');
     button.id = 'findProduct'
     button.textContent = "Adicionar Produto";
 
-    form.append(labelNome, labelId, button);
+    form.append(labelNome, labelCategory, button);
     results.appendChild(form);
 })
 
@@ -110,11 +129,19 @@ btnRemover.addEventListener('click', () => {
 const listarProdutos = document.querySelector('#btnList');
 
 async function displayProducts() {
-    const apiUrl = 'https://fakestoreapi.com/products'
-    const request = await fetch(apiUrl);
+
+    const currentUrl = window.location.href;
+    const pathName = window.location.pathname;
+    const newUrl = currentUrl.replace(pathName, '');
+    console.log(`${newUrl}/products/`)
+    const request = await fetch(`${newUrl}/products/`);
     const data = await request.json();
-    const productList = document.querySelector('.productsDisplay')
-    productList.innerHTML = ""
+    console.log(data);
+
+    
+    const productList = document.querySelector('.productsDisplay');
+    productList.innerHTML = "";
+
     data.forEach(product => {
         const li = document.createElement('li');
         li.className = "product";
