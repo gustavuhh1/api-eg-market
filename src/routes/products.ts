@@ -93,42 +93,6 @@ export async function productsRoutes(app: FastifyInstance) {
         return reply.status(204).send()
     })
 
-    app.post('/resetBD', async (request, reply) => {
-
-
-        // Resetar o bando de dados, e criar um genérico
-        await prisma.products.deleteMany({})
-
-
-        try {
-            interface Product {
-                title: string;
-                price: number;
-                image: string;
-            }
-
-            const productsExamples = await fetch('https://fakestoreapi.com/products')
-            const data = await productsExamples.json();
-
-            data.forEach(async (element: Product) => {
-
-                await prisma.products.create({
-                    data: {
-                        name: element.title,
-                        price: element.price,
-                        img_link: element.image,
-                    }
-                })
-            
-            });
-            
-            return reply.status(200).send()
-        } catch (error) {
-            console.error('Error na requisição.', error)
-        }
-        
-    })
-
     app.put('/update/:id', async(request, reply) => {
 
         const updateProductBodySchema = z.object({

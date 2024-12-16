@@ -147,14 +147,14 @@ async function displayProducts() {
         li.className = "product";
 
         const img = document.createElement('img');
-        img.src = product.image;
+        img.src = product.img_link;
         img.alt = "Foto";
 
         const productInfo = document.createElement('productInfo');
         productInfo.className = "productInfo";
 
         const h6 = document.createElement('h6');
-        h6.textContent = product.title;
+        h6.textContent = product.name;
 
         const pPrice = document.createElement('p');
         pPrice.textContent = `Preço: R$ ${product.price}`
@@ -169,5 +169,6 @@ async function displayProducts() {
 }
 
 listarProdutos.addEventListener('click', () => {
+    console.log('oi')
     displayProducts();
 })
