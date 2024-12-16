@@ -7,48 +7,15 @@ datasource db {
   provider  = "postgresql"
   url       = env("DB_URL")
   directUrl = env("BD_DIRECT_URL")
-  schemas   = ["users"]
+  schemas   = ["master"]
 }
 
-model CarList {
-  id         Int       @id
-  created_at DateTime  @default(now()) @db.Timestamptz(6)
-  price      Float     @db.Real
-  user_id    String    @db.Uuid
-  products   Json      @db.Json
-  consumers  consumers @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@schema("users")
-}
-
-model Products {
-  id       Int    @id(map: "products_pkey") @default(autoincrement())
+model products {
+  id       BigInt  @id @default(autoincrement())
   name     String
-  price    Float  @db.Real
-  img_link String
+  price    Float
+  img_link String?
+  category String
 
-  @@schema("users")
-}
-
-model Sales {
-  id             BigInt    @id @default(autoincrement())
-  consumer_id    String    @default(dbgenerated("auth.uid()")) @db.Uuid
-  sold_at        DateTime  @default(now()) @db.Timestamptz(6)
-  products_saled Json[]    @db.Json
-  price_total    Float     @db.Real
-  consumers      consumers @relation(fields: [consumer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-
-  @@schema("users")
-}
-
-model consumers {
-  id         String    @id(map: "consumer_pkey") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  created_at DateTime  @default(now()) @db.Timestamptz(6)
-  username   String
-  password   String
-  email      String
-  CarList    CarList[]
-  Sales      Sales[]
-
-  @@schema("users")
+  @@schema("master")
 }

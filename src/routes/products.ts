@@ -10,11 +10,12 @@ export async function productsRoutes(app: FastifyInstance) {
         const createProductBodySchema = z.object({
             name: z.string(),
             price: z.number(),
-            img_link: z.string().url(),
+            img_link: z.string().url().nullable(),
+            category: z.string()
 
         })
 
-        const { name, price, img_link } = createProductBodySchema.parse(
+        const { name, price, img_link, category } = createProductBodySchema.parse(
             request.body
         )
 
@@ -35,6 +36,7 @@ export async function productsRoutes(app: FastifyInstance) {
             name,
             price,
             img_link: img_link || "",
+            category
         }})
 
         return reply.status(201).send({message:"Produto criado com sucesso"})
