@@ -43,7 +43,7 @@ btnAdicionar.addEventListener('click', () => {
     const selectCategory = document.createElement('select');
     selectCategory.name = "categoryProduct";
     selectCategory.id = "categoryProduct";
-    selectCategory.addEventListener(getCategories);
+    getCategories();
     labelCategory.appendChild(selectCategory);
 
     const button = document.createElement('button');
@@ -135,6 +135,7 @@ async function displayProducts() {
     const newUrl = currentUrl.replace(pathName, '');
     const request = await fetch(`${newUrl}/products/`);
     const data = await request.json();
+    console.log(data)
     
     const productList = document.querySelector('.productsDisplay');
     productList.innerHTML = "";
@@ -142,7 +143,7 @@ async function displayProducts() {
     data.forEach(product => {
         const li = document.createElement('li');
         li.className = "product";
-
+        
         const img = document.createElement('img');
         img.src = product.img_link;
         img.alt = "Foto";
@@ -150,22 +151,25 @@ async function displayProducts() {
         const productInfo = document.createElement('productInfo');
         productInfo.className = "productInfo";
 
-        const h6 = document.createElement('h6');
-        h6.textContent = product.name;
-
-        const pPrice = document.createElement('p');
-        pPrice.textContent = `Preço: R$ ${product.price}`
-
-        const pId = document.createElement('p');
+        const pId = document.createElement('span');
         pId.textContent = `Id: ${product.id}`;
 
-        productInfo.append(h6, pId, pPrice);
+        const pName = document.createElement('span');
+        pName.textContent = product.name;
+
+        const pCategory = document.createElement('span');
+        pCategory.textContent = `Categoria: ${product.category}`;
+
+        const pPrice = document.createElement('span');
+        pPrice.textContent = `Preço: R$ ${product.price}`
+
+
+        productInfo.append(pId, pName, pCategory, pPrice);
         li.append(img, productInfo)
         productList.append(li);
     });    
 }
 
 listarProdutos.addEventListener('click', () => {
-    console.log('oi')
     displayProducts();
 })
