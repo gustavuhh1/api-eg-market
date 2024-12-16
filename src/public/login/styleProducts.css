@@ -317,3 +317,171 @@ body {
     }
 }
 
+
+
+
+@media (min-width: 768px) {
+    .headerMain {
+        .headerTop {
+            display: grid;
+            grid-template-columns: 40% 60%;
+
+                .headerTopBtns{
+                    display: none;
+                }
+
+                #logo{
+                    max-width: 80%;
+                }
+
+                input{
+                    width: 90%;
+                    height: 1.8rem;
+                    justify-self: flex-start;
+                }
+        }
+        .navList {
+            width: 100vw !important;
+            
+            .navGuide {
+                a{
+                    font-size: 0.8rem !important;
+                }    
+            }
+          
+        }
+    }
+
+    .adminDisplay{
+        .adminCommands{
+            width: 90vw;
+        }
+
+        .adminButtons{
+            width: 10rem;
+            padding: 0.6rem;
+        }
+
+        .resultGuide, .productsDisplay {
+            width: 90vw;
+
+                label{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-flow: column;
+                }
+        }
+
+    }
+}
+
+@media (min-width: 992px) {
+    .headerMain{
+        .headerTop input{
+            width: 90%;
+            height: 1.8rem;
+            font-size: 1rem;
+        }
+
+        #logo{
+            max-width: 60%;
+        }
+
+        .headerTopBtns {
+            display: flex;
+            
+            #helloUser, #cartUser{
+                font-size: 0.9rem;
+            }
+        }
+
+        .headerNav {
+                .navList {
+                    width: 100vw;
+
+                    a {
+                        font-size: 1rem !important;
+                    }
+                }
+        }
+    }
+
+    .adminDisplay{
+        .adminCommands{
+            width: 90vw;
+        }
+
+        .adminButtons{
+            width: 12rem;
+            padding: 0.6rem;
+        }
+
+        .resultGuide, .productsDisplay {
+            width: 90vw;
+
+                label{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-flow: column;
+                }
+        }
+
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .headerMain{
+
+        .headerTop{
+            display: grid;
+            grid-template-columns: 25% 50% 25%;
+        }
+
+        #logo{
+            max-width: 80%;
+        }
+
+
+        .headerTop input{
+            width: 90%;
+        }
+
+        .headerTopBtns{
+            display: flex !important;
+
+            #helloUser, #cartUser{
+                font-size: 1.2rem;
+            }
+        }
+
+        .navList{
+            width: 80vw !important;
+
+            .navGuide {
+               a{
+                    font-size: 1rem !important;
+                }
+            }
+        }
+    }
+
+
+    .adminDisplay{
+        .adminCommands{
+            width: 80vw;
+
+            .adminButtons{
+                width: 12rem;
+                padding: 1rem;
+            }
+        }
+
+        .resultGuide, .productsDisplay {
+            width: 70vw;
+        }
+        
+    }
+}
