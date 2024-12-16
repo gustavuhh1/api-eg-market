@@ -93,6 +93,8 @@ export async function productsRoutes(app: FastifyInstance) {
         return reply.status(204).send()
     })
 
+
+
     app.put('/update/:id', async(request, reply) => {
 
         const updateProductBodySchema = z.object({
