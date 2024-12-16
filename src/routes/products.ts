@@ -42,9 +42,9 @@ export async function productsRoutes(app: FastifyInstance) {
         return reply.status(201).send({message:"Produto criado com sucesso"})
     })
 
-    app.get('/allProducts', async(request, reply) => {
+    app.get('/', async(request, reply) => {
         
-        const products = await prisma.products.findMany({orderBy: {id: 'asc'}})
+        const products = await prisma.products.findMany()
 
         return reply.status(201).send(products)
     })
